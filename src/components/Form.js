@@ -7,7 +7,7 @@ import Error from './Error'
 const Form = ({saveExpense, saveCreateExpense}) => {
 
     const [name,saveName] = useState('');
-    const [amount, saveAmount] = useState(0);
+    const [amount, saveAmount] = useState();
     const [error, saveError] = useState(false);
 
     const addExpense = e => {
@@ -29,7 +29,7 @@ const Form = ({saveExpense, saveCreateExpense}) => {
         saveCreateExpense(true);
 
         saveName('');
-        saveAmount(0);
+        saveAmount('');
     }
 
     return ( 
@@ -37,7 +37,7 @@ const Form = ({saveExpense, saveCreateExpense}) => {
             onSubmit = {addExpense}
         >
             <h2>Add your expenses here</h2>
-            { error ? <Error message='Both fields are mandatory'/> : null }
+            { error ? <Error message='Complete mandatory fields'/> : null }
             <div className='campo'>
                 <label>Expenses concept</label>
                 <input
